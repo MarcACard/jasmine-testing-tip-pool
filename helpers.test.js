@@ -31,6 +31,7 @@ describe("Helpers.js test", () => {
     tipAmtInput.value = '';
     allPayments = {};
     paymentId = 0;
+    paymentTbody.innerHTML = '';
     for (td of summaryTds) {
       td.innerText = "";
     }
