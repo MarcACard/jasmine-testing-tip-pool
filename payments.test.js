@@ -47,7 +47,7 @@ describe('payments.js unit testing', () => {
     })
   })
 
-  // appendPaymentTable()
+  // --- appendPaymentTable() ---
   it('should append a new row to the paymentTable on appendPaymentTable()', () => {
     const curPayment = createCurPayment();
     appendPaymentTable(curPayment);
@@ -55,10 +55,11 @@ describe('payments.js unit testing', () => {
     const paymentTRs = paymentTbody.querySelectorAll('tr');
     const paymentTDs = paymentTRs[0].querySelectorAll('td');
     expect(paymentTRs.length).toEqual(1)
-    expect(paymentTDs.length).toEqual(3);
+    expect(paymentTDs.length).toEqual(4);
     expect(paymentTDs[0].innerText).toEqual('$200');
     expect(paymentTDs[1].innerText).toEqual('$50');
     expect(paymentTDs[2].innerText).toEqual('25%');
+    expect(paymentTDs[3].innerText).toEqual('x');
   })
 
   // updateSummary()

@@ -24,3 +24,33 @@ function appendTd(tr, value) {
 
   tr.append(newTd);
 }
+
+function appendDeleteBtn(tr) { 
+  let newTd = document.createElement('td');
+  let deleteBtn = document.createElement('button');
+  deleteBtn.innerText = 'x'
+  newTd.append(deleteBtn);
+  deleteBtn.addEventListener('click',(event)=> {
+    deleteTR(event.target.parentElement.parentElement);
+  })
+
+  tr.append(newTd);
+}
+
+// expects a tr and will delete it from the dom and related global object
+function deleteTR(tr) {
+  if (tr.tagName !== 'TR') return;
+  deleteFromGlobals(tr.id)
+  tr.remove();
+}
+
+// expects the key value from the allPayments or allServers Obj to remove said item. 
+function deleteFromGlobals(trId){
+  if (trId.startsWith('payment')){
+    delete allPayments[trId];
+    updateSummary()
+  } else if (trId.startsWith('server')){
+    delete allServers[trId];
+    updateServerTable()
+  }
+}
