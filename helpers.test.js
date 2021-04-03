@@ -26,4 +26,13 @@ describe("Helpers.js test", () => {
     let testTDs = testTR.querySelectorAll('td');
     expect(testTDs.length).toEqual(testValues.length);
   })
+  afterAll(() => {
+    billAmtInput.value = '';
+    tipAmtInput.value = '';
+    allPayments = {};
+    paymentId = 0;
+    for (td of summaryTds) {
+      td.innerText = "";
+    }
+  })
 })
